@@ -18,6 +18,16 @@ void Print(int* a, const int n, int i)
         cout << endl;
 }
 
+int Min(int* a, const int n, int i, int min)
+{
+    if (a[i] < min)
+        min = a[i];
+    if (i < n - 1)
+        return Min(a, n, i + 1, min);
+    else
+        return min;
+}
+
 int Find1(int* a, const int n, int i1)
 {
     if (i1 < n)
@@ -92,6 +102,7 @@ int main()
     Create(r, n, Low, High, 0);
     Print(r, n, 0);
 
+    cout << "min = " << Min(r, n, 1, r[0]) << endl;
     int i1 = Find1(r, n, 0);
     if (i1 > -1)
         cout << endl;
